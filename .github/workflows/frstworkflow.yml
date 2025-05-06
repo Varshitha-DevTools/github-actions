@@ -1,27 +1,27 @@
 name: 01 - Building Blocks
+
 on: push
+
 jobs:
- frst job:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+  frst-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Say hello
-      runs: echo "hello-world"
-      
- echo-goodbye:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Say hello
+        run: echo "hello-world"
 
-    - name: Failed step
-      run: |
-       echo "I will fail"
-        exit 1
-    
-    - name: Say goodbye
-      run: echo "goodbye-world"
-      
-      
+  echo-goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Failed step
+        run: |
+          echo "I will fail"
+          exit 1
+
+      - name: Say goodbye
+        run: echo "goodbye-world"
