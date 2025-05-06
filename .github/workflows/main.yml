@@ -10,7 +10,7 @@ jobs:
         run: echo "This file was created in the first job" > dragon.txt
 
       - name: Upload the file as an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2    # Fixed to v2
         with:
           name: dragon-artifact
           path: dragon.txt
@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download the artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2    # Fixed to v2
         with:
           name: dragon-artifact
 
