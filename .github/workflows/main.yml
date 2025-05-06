@@ -1,0 +1,28 @@
+name: Create and Share File Between Jobs
+
+on: [push]
+
+jobs:
+  create_and_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a text file
+        run: echo "This file was created in the first job" > dragon.txt
+
+      - name: Upload the file as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dragon-artifact
+          path: dragon.txt
+
+  download_and_use:
+    needs: create_and_upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dragon-artifact
+
+      - name: Show content of the downloaded file
+        run: cat dragon.txt
